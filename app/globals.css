@@ -1,0 +1,75 @@
+@config "../tailwind.config.ts";
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+  --background: #0a0a0c;
+  --foreground: #f4f4f5;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  background: var(--background);
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 15% 0%, rgb(250 204 21 / 6%), transparent 34rem),
+    radial-gradient(ellipse at 100% 50%, rgb(34 197 94 / 4%), transparent 36rem),
+    var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+::selection {
+  background: rgb(250 204 21 / 30%);
+  color: #fff;
+}
+
+.room-panel-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-auto-rows: minmax(20rem, 1fr);
+  gap: 1rem;
+  min-height: calc(100dvh - 8rem);
+}
+
+@media (min-width: 768px) {
+  .room-panel-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1280px) {
+  .room-panel-grid--2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: minmax(20rem, 1fr);
+  }
+
+  .room-panel-grid--3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: minmax(20rem, 1fr);
+  }
+
+  .room-panel-grid--4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(20rem, 1fr));
+  }
+}
+
+.room-panel-grid [role="log"] {
+  scrollbar-color: rgb(250 204 21 / 28%) transparent;
+  scrollbar-width: thin;
+}
